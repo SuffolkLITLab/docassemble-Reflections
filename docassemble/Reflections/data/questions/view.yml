@@ -1,0 +1,64 @@
+---
+modules:
+  - .view_sessions
+---
+question: |
+  What filename do you want to view records from?
+fields:
+  - Filename: filename 
+    datatype: combobox
+    code: |      
+      [{interview.get('filename'): interview.get('title')} for interview in interview_menu()]
+---
+code: |
+  records_df = get_records_from_filename(filename)
+---
+mandatory: True
+question: |
+  Here are the stored records from the file you selected
+subquestion: |
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="table-tab" data-bs-toggle="tab" data-bs-target="#table" type="button" role="tab" aria-controls="table" aria-selected="true">Table View</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="record-tab" data-bs-toggle="tab" data-bs-target="#record" type="button" role="tab" aria-controls="record" aria-selected="false">Record View</button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="table" role="tabpanel" aria-labelledby="table-tab">
+      ${ records_df.to_html(classes='table table-striped table-bordered table-hover')}
+    </div>
+  
+  <div class="tab-pane fade" id="record" role="tabpanel" aria-labelledby="record-tab">
+    <div id="recordCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        % for idx, record in enumerate(records_df.to_dict('records')):
+          <div class="carousel-item bg-info ${'active' if idx == 0 else ''}">
+            <div class="d-block w-100">
+              % for key, value in record.items():
+                <p><strong>${key}:</strong> ${value}</p>
+              % endfor       
+            </div>
+          </div>
+        % endfor
+      </div>
+      <a class="carousel-control-prev" href="#recordCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#recordCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </div>
+script: |
+  <script>
+    $(document).on('daPageLoad', function() {
+      const carousel = new bootstrap.Carousel('#recordCarousel')
+
+      // $('#recordCarousel').carousel();
+    });
+  </script>

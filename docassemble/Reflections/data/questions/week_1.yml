@@ -1,0 +1,33 @@
+---
+features:
+  labels above fields: True
+---
+mandatory: True
+code: |
+  questions
+  store_record
+  thanks_and_download
+---
+continue button field: questions
+question: |
+  This is the weekly reflection
+fields:
+  - How was today's class on a scale of 1 to 5?: class_rating
+    datatype: range
+    min: 1
+    max: 5
+    step: 1
+    default: 5
+  - What do you think could be improved? What worked well?: suggestions
+    datatype: area
+    rows: 3
+  - Reflect on this week's readings. Pick at least one argument or position that you agree with and one that you disagree with. Explain, citing specific examples.: reading_reflection
+    datatype: area
+    rows: 5
+---
+code: |
+  store_variables_snapshot()
+  store_record = True
+---
+question: |
+  Thanks for your reflection! You can download a copy of your responses below.
