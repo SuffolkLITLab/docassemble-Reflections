@@ -1,33 +1,41 @@
 ---
-features:
-  labels above fields: True
+include:
+  - base_reflection.yml
 ---
-mandatory: True
+metadata:
+  title: |
+    Weekly Reflection for Week 1
+---
+sets: reflection_questions["chat"].initial_question
 code: |
-  questions
-  store_record
-  thanks_and_download
+  reflection_questions["chat"].initial_question = """
+  After reviewing the readings, particularly focusing on McGinnis & Pearce's "The Great Disruption," the explanation of how AI large language models work, the implications of ChatGPT for Legal Services and Society, and skimming through Clio's Legal Trend Report (2023), reflect on the following:
+
+  "How do you envision the role of lawyers evolving in the wake of advancements in AI and machine intelligence, as discussed in the readings? Consider the balance between the opportunities and challenges presented by these technologies. In your reflection, include specific examples or concepts from the readings that support your perspective. Additionally, discuss how these changes might influence your approach to a career in law."
+  """
 ---
 continue button field: questions
 question: |
-  This is the weekly reflection
+  Weekly reflection
+subquestion: |
+  ${ rubric_explanation }
 fields:
-  - How was today's class on a scale of 1 to 5?: class_rating
+  - How was today's class on a scale of 1 to 5?: reflection_questions["class_rating"]
     datatype: range
     min: 1
     max: 5
     step: 1
     default: 5
-  - What do you think could be improved? What worked well?: suggestions
+  - What do you think could be improved? What worked well?: reflection_questions["suggestions"]
     datatype: area
     rows: 3
-  - Reflect on this week's readings. Pick at least one argument or position that you agree with and one that you disagree with. Explain, citing specific examples.: reading_reflection
+    required: False
+  - note: |
+      ---
+  - label: |
+      ${ reflection_questions["chat"].initial_question }
+    field: reflection_questions["chat"].initial_draft
     datatype: area
     rows: 5
----
-code: |
-  store_variables_snapshot()
-  store_record = True
----
-question: |
-  Thanks for your reflection! You can download a copy of your responses below.
+    validate: |
+      lambda y: len(y.split(" ")) > 90 or validation_error("Write at least 100 words.")

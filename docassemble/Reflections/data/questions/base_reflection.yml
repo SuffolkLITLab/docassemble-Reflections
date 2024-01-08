@@ -1,0 +1,74 @@
+metadata:
+  require login: True
+---
+features:
+  labels above fields: True
+---
+include: 
+  - docassemble.ALToolbox:goal_satisfy.yml
+---
+objects:
+  - reflection_questions: DADict.using(auto_gather=False, gathered=True)
+  - reflection_questions["chat"]: GoalSatisfactionList.using(goals=reflection_goals)
+---
+variable name: reflection_goals
+data:
+  - Demonstrate that you understand the material
+  - Demonstrate critical analysis and synthesis
+  - Clearly articulate personal learning and how the readings impact your understanding or perspective
+  - Writing is clear, well-organized, and free of grammatical errors
+---
+template: rubric_explanation
+content: |
+  This is the weekly reflection. Each week, you will be asked to reflect on the readings and the previous class.
+
+  In your response, consider the following rubric:
+
+  - Demonstrate that you understand the material
+  - Demonstrate critical analysis and synthesis
+  - Clearly articulate personal learning and how the readings impact your understanding or perspective
+  - Writing is clear, well-organized, and free of grammatical errors
+
+  You should write at least 100 words. You can write more if you want to.
+
+  Your answer will be sent to GPT-3 to check against the rubric, and you will have a chance to
+  revise your answer based on follow-up questions if needed.
+
+---
+mandatory: True
+code: |
+  questions
+  reflection_questions["chat"].gather()
+  if len(reflection_questions["chat"]) > 0:
+  store_record
+  thanks_and_download
+---
+code: |
+  store_variables_snapshot(data={
+      item for item in reflection_questions.items()
+    }.update(
+      {
+        "user": user_info().email,
+        "datetime": current_datetime()
+      }
+    ))
+  store_record = True
+---
+event: thanks_and_download
+question: |
+  Thanks for your reflection! You can download a copy of your responses below.
+attachment:
+  - filename: weekly_reflection_${ user_info().email }_${current_datetime() }
+    content: |
+      Student: ${ user_info().email }
+
+      % for key, value in reflection_questions.items():
+
+      % if key == "chat":
+      ${ bold(key) }:
+
+      ${ value.show_current_progress }
+      % else:
+      ${ bold(key) }: ${ value }
+      % endif
+      % endfor
