@@ -3,6 +3,7 @@ metadata:
 ---
 features:
   labels above fields: True
+  bootstrap theme: theme.css
 ---
 include: 
   - docassemble.ALToolbox:goal_satisfy.yml
@@ -20,55 +21,79 @@ data:
 ---
 template: rubric_explanation
 content: |
-  This is the weekly reflection. Each week, you will be asked to reflect on the readings and the previous class.
-
   In your response, consider the following rubric:
 
-  - Demonstrate that you understand the material
-  - Demonstrate critical analysis and synthesis
-  - Clearly articulate personal learning and how the readings impact your understanding or perspective
-  - Writing is clear, well-organized, and free of grammatical errors
+  % for goal in reflection_goals:
+  - ${ goal }
+  % endfor
+---
+generic object: GoalSatisfactionList
+question: |
+  % if i == 0:
+  Let's go a little deeper
+  % else:
+  Goal: ${ x[i].goal }
+  % endif
+subquestion: |
+  % if i == 0:
+  We want to know more about this reflection goal: ${ x[i].goal }. We'll ask you a few more
+  questions to help us understand your reflection better.
+  % endif
 
-  You should write at least 100 words. You can write more if you want to.
-
-  Your answer will be sent to GPT-3 to check against the rubric, and you will have a chance to
-  revise your answer based on follow-up questions if needed.
-
+  ${ collapse_template(x.show_current_progress) }
+fields:
+  - ${ x[i].question }: x[i].response
+    datatype: area
 ---
 mandatory: True
 code: |
   questions
   reflection_questions["chat"].gather()
-  if len(reflection_questions["chat"]) > 0:
   store_record
   thanks_and_download
 ---
 code: |
-  store_variables_snapshot(data={
-      item for item in reflection_questions.items()
-    }.update(
-      {
-        "user": user_info().email,
-        "datetime": current_datetime()
-      }
-    ))
+  store_variables_snapshot(persistent=True, data={
+      k: v for k, v in {
+          **reflection_questions.elements,
+          "user": user_info().email,
+          "datetime": current_datetime(),
+          reflection_questions["chat"].initial_question: reflection_questions["chat"].initial_draft,
+          "follow_up_questions": [
+              {question.question: question.response}
+              for question in reflection_questions["chat"].elements
+          ],
+      }.items() if k != "chat"
+  })
   store_record = True
 ---
 event: thanks_and_download
 question: |
-  Thanks for your reflection! You can download a copy of your responses below.
+  Thanks for your reflection!
+subquestion: |
+  You can download a copy of your responses below. Please attach a copy of your reflection to 
+  your weekly reflection assignment on Teams.
 attachment:
   - filename: weekly_reflection_${ user_info().email }_${current_datetime() }
+    allowed formats: 
+      - docx
     content: |
-      Student: ${ user_info().email }
+      # Weekly Reflection
+      Student: ${ bold(user_info().email) }
+
+      ## Reflection question
+
+      ${ reflection_questions["chat"].initial_question }
 
       % for key, value in reflection_questions.items():
-
       % if key == "chat":
-      ${ bold(key) }:
+      ### Your reflection
 
       ${ value.show_current_progress }
       % else:
-      ${ bold(key) }: ${ value }
+      
+      ### ${ key.replace("_", " ").title() }
+    
+      ${ value }
       % endif
       % endfor

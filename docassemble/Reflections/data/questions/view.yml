@@ -2,13 +2,27 @@
 modules:
   - .view_sessions
 ---
+metadata:
+  title: View interview snapshots
+  required roles:
+    - admin
+---
 question: |
   What filename do you want to view records from?
 fields:
   - Filename: filename 
     datatype: combobox
     code: |      
-      [{interview.get('filename'): interview.get('title')} for interview in interview_menu()]
+      current_filenames + [{interview.get('filename'): interview.get('title')} for interview in interview_menu()]
+---
+code: |
+  current_filenames = [
+    f"{ user_info().package }:week_{idx}.yml" 
+    for idx in range(1, 12)
+  ] if "playground" in user_info().filename else [
+    f"{ user_info().package }:data/questions/week_{idx}.yml" 
+    for idx in range(1, 12)
+  ]
 ---
 code: |
   records_df = get_records_from_filename(filename)
@@ -36,10 +50,26 @@ subquestion: |
       <div class="carousel-inner">
         % for idx, record in enumerate(records_df.to_dict('records')):
           <div class="carousel-item bg-info ${'active' if idx == 0 else ''}">
-            <div class="d-block w-100">
+            <div class="d-block w-100 p-3">
               % for key, value in record.items():
+              % if isinstance(value, list):
+              <p><strong>${key}</strong></p>
+              % for item in value:
+              % if isinstance(item, dict):
+              % for k, v in item.items():
+                <div class="list-group">
+                  <div class="list-group-item active">${k}</div>
+                  <div class="list-group-item">${single_to_double_newlines(v)}</div>
+                </div>
+              % endfor
+              % else:
+              <p>${item}</p>
+              % endif
+              % endfor
+              % else:
                 <p><strong>${key}:</strong> ${value}</p>
-              % endfor       
+              % endif
+              % endfor
             </div>
           </div>
         % endfor

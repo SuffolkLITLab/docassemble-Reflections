@@ -11,31 +11,33 @@ code: |
   reflection_questions["chat"].initial_question = """
   After reviewing the readings, particularly focusing on McGinnis & Pearce's "The Great Disruption," the explanation of how AI large language models work, the implications of ChatGPT for Legal Services and Society, and skimming through Clio's Legal Trend Report (2023), reflect on the following:
 
+
   "How do you envision the role of lawyers evolving in the wake of advancements in AI and machine intelligence, as discussed in the readings? Consider the balance between the opportunities and challenges presented by these technologies. In your reflection, include specific examples or concepts from the readings that support your perspective. Additionally, discuss how these changes might influence your approach to a career in law."
   """
 ---
+objects:
+  - background_image: DAStaticFile.using(filename="background_illustration.png")
+---
+id: first_page
 continue button field: questions
 question: |
   Weekly reflection
 subquestion: |
+  This is the weekly reflection. Each week, you will be asked to reflect on the readings 
+  and the previous class.
+
+  You should write at least 50-100 words. You can write more if you want to.
+
+  Your answer will be sent to GPT-3.5 to check against the rubric. If your first
+  answer isn't complete, you may be asked a few follow-up questions to help you
+  deepen your understanding of the material.
+
   ${ rubric_explanation }
 fields:
-  - How was today's class on a scale of 1 to 5?: reflection_questions["class_rating"]
-    datatype: range
-    min: 1
-    max: 5
-    step: 1
-    default: 5
-  - What do you think could be improved? What worked well?: reflection_questions["suggestions"]
-    datatype: area
-    rows: 3
-    required: False
-  - note: |
-      ---
   - label: |
       ${ reflection_questions["chat"].initial_question }
     field: reflection_questions["chat"].initial_draft
     datatype: area
     rows: 5
     validate: |
-      lambda y: len(y.split(" ")) > 90 or validation_error("Write at least 100 words.")
+      lambda y: (wc := len(y.split(" "))) > 50 or validation_error(f"Write at least 50 words (you wrote { wc }).")

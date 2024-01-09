@@ -1,0 +1,41 @@
+
+---
+include:
+  - base_reflection.yml
+---
+metadata:
+  title: |
+    Weekly Reflection for Week 4
+---
+sets: reflection_questions["chat"].initial_question
+code: |
+  reflection_questions["chat"].initial_question = '''
+  Compare and contrast the Gavel platform that we learned in class last week with the Docassemble program that you completed a Hello, World exercise in. How do the two tools appear to differ? Are there specific use cases or benefits mentioned that you find particularly compelling?
+  '''
+---
+id: first_page
+continue button field: questions
+question: |
+  Weekly reflection
+subquestion: |
+  ${ rubric_explanation }
+fields:
+  - How was last week's class on a scale of 1 to 5?: reflection_questions["class_rating"]
+    datatype: range
+    min: 1
+    max: 5
+    step: 1
+    default: 5
+  - What do you think could be improved? What worked well?: reflection_questions["suggestions"]
+    datatype: area
+    rows: 3
+    required: False
+  - note: |
+      ---
+  - label: |
+      ${ reflection_questions["chat"].initial_question }
+    field: reflection_questions["chat"].initial_draft
+    datatype: area
+    rows: 5
+    validate: |
+      lambda y: (wc := len(y.split(" "))) > 50 or validation_error(f"Write at least 50 words (you wrote { wc }).")
