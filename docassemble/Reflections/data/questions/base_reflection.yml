@@ -49,6 +49,7 @@ mandatory: True
 code: |
   questions
   reflection_questions["chat"].gather()
+  reflection_questions["feedback"]
   store_record
   thanks_and_download
 ---
@@ -67,12 +68,19 @@ code: |
   })
   store_record = True
 ---
+code: |
+  reflection_questions["feedback"] = reflection_questions["chat"].provide_feedback()
+---
 event: thanks_and_download
 question: |
   Thanks for your reflection!
 subquestion: |
   You can download a copy of your responses below. Please attach a copy of your reflection to 
   your weekly reflection assignment on Teams.
+
+  Here is some feedback on your reflection:
+
+  ${ reflection_questions["feedback"] }
 attachment:
   - filename: weekly_reflection_${ user_info().email }_${current_datetime() }
     allowed formats: 
