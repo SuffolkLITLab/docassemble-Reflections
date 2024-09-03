@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Our guest Colin Levy is a leading voice on the legal profession, especially on the topic of legal technology. He has been a special advocate for issues relating to mental health (which he has sometimes struggled with) and his journey as a gay man in the legal industry, although neither has defined him. What questions do you have for him about the future of legal tech and the legal profession? What are you most curious about? What do you think are the most important issues to discuss?
+  Explore the legal tech pathways link and identify 2-3 career paths that interest you. Discuss how the readings and the career pathways link have influenced your perspective on the role of technology in legal practice and how it might influence your future career plans.
   '''
 ---
 id: first_page

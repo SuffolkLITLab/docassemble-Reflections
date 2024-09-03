@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Explore the legal tech pathways link and identify 2-3 career paths that interest you. Discuss how the readings and the career pathways link have influenced your perspective on the role of technology in legal practice and how it might influence your future career plans.
+  How do you think your law firm could use workflow automation? What tasks come to mind as being good ones to start automating? What might be bad to automate? Draw on specific examples from the readings.
   '''
 ---
 id: first_page

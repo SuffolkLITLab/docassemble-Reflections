@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  1. How do you think your law firm could use workflow automation? What tasks come to mind as being good ones to start automating? \n2. Reflect on the principles of app design and workflow automation in the context of the readings. How do these principles address the practical needs and challenges in legal practice? Discuss a specific legal process that could be improved by applying these design principles and technologies.
+  How does the term 'earliest testable product' (ETP) relate to the concept of 'minimum viable product' (MVP)? How do the readings suggest that ETPs and MVPs can be used to improve legal services? Discuss how the readings have influenced your perspective on the role of technology in legal practice. How might you apply these concepts in your final project?
   '''
 ---
 id: first_page

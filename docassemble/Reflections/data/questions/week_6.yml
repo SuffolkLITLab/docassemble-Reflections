@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Considering the readings on generative AI and its ethical implications, how do you think legal professionals should approach the use of such technologies? Discuss how the readings highlight the balance between innovation and maintaining ethical standards in legal practice. Draw on specific examples and arguments from the readings.
+  Reflect on the 'Digital Curb Cuts' article that describes the Document Assembly Line project. What are the key takeaways from the article? How do the concepts discussed in the article relate to the readings on legal tech and access to justice? Discuss how the article and the readings have influenced your perspective on the role of technology in legal practice.
   '''
 ---
 id: first_page

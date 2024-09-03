@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Reflect on the potential of document automation tools like Gavel in transforming legal practice and forming the basis of so-called 'legal products, 'especially for solo practitioners. How do the readings suggest these tools will impact efficiency and client service? Discuss any potential challenges or ethical considerations mentioned in the readings.
+  Given the efficiency gains and productivity improvements discussed so far in class, in this week's readings, and in the 2023 Legal Trends Report, particularly the impact of technology and AI on legal practice, how can tools like Docassemble be leveraged to not only build expert systems but also enhance client-centered legal services? Reflect on the potential challenges and ethical considerations that may arise when integrating such technologies into your practice.
   '''
 ---
 id: first_page

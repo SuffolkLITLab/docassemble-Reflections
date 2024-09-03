@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Reflect on the presentation day: Which free legal tech tool do you find most promising and why?
+  Reflecting on Steve Krug's 'Don't Make Me Think' and the C.R.A.P. design principles, how can the insights from these resources be applied to improve the clarity and effectiveness of legal documents or websites? Additionally, consider the advice from 'How to Write Good Questions': What strategies would you employ to ensure that questions within these legal documents or user interfaces are direct, clear, and easy to understand for all users, regardless of their legal expertise?
   '''
 ---
 id: first_page
@@ -27,6 +27,12 @@ fields:
     step: 1
     default: 5
   - What do you think could be improved? What worked well?: reflection_questions["suggestions"]
+    datatype: area
+    rows: 3
+    required: False
+  - note: |
+      ---
+  - What do you want to know about Theory and Principle founder [Nicole Bradick](https://www.legaltechfounder.com/2018/10/nicole-bradick-founder-theory-principle-needs-change-legal-tech-industry/)? Write 1-2 questions you might ask in class.: reflection_questions["nicole_bradick"]
     datatype: area
     rows: 3
     required: False
