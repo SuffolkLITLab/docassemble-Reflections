@@ -10,7 +10,7 @@ include:
 ---
 objects:
   - reflection_questions: DADict.using(auto_gather=False, gathered=True)
-  - reflection_questions["chat"]: GoalSatisfactionList.using(goals=reflection_goals)
+  - reflection_questions["chat"]: GoalSatisfactionList.using(goals=reflection_goals) #, model="gpt-4o-mini")
 ---
 variable name: reflection_goals
 data:
