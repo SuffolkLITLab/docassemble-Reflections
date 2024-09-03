@@ -32,6 +32,12 @@ fields:
     required: False
   - note: |
       ---
+  - What do you want to know about firm owner [Laura Patton](https://planningyourlegacy.net/)? Write 1-2 questions you might ask in class.: reflection_questions["laura_patton"]
+    datatype: area
+    rows: 3
+    required: False
+  - note: |
+      ---
   - label: |
       ${ reflection_questions["chat"].initial_question }
     field: reflection_questions["chat"].initial_draft

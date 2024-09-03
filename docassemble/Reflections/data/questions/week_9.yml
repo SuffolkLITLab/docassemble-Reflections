@@ -32,6 +32,12 @@ fields:
     required: False
   - note: |
       ---
+  - What do you want to know about Theory and Principle founder [Nicole Bradick](https://www.legaltechfounder.com/2018/10/nicole-bradick-founder-theory-principle-needs-change-legal-tech-industry/)? Write 1-2 questions you might ask in class.: reflection_questions["nicole_bradick"]
+    datatype: area
+    rows: 3
+    required: False
+  - note: |
+      ---
   - label: |
       ${ reflection_questions["chat"].initial_question }
     field: reflection_questions["chat"].initial_draft
