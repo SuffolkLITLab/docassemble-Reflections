@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  How does the term 'earliest testable product' (ETP) relate to the concept of 'minimum viable product' (MVP)? How do the readings suggest that ETPs and MVPs can be used to improve legal services? Discuss how the readings have influenced your perspective on the role of technology in legal practice. How might you apply these concepts in your final project?
+  Before conducting a usability test, reflect on the primary objectives and methodologies of usability testing based on your studies. What specific aspects of the user experience are you most interested in evaluating, and why? Consider how the principles of effective design and user feedback can inform your approach to this test. How will you ensure that the test is structured to yield actionable insights that can lead to meaningful improvements in the product or interface?
   '''
 ---
 id: first_page

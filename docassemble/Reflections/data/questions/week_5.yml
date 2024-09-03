@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Reflect on the role of AI-powered tools like chatbots in legal intake processes, as discussed in the LawDroid overview and other readings. How do these sources illustrate the potential benefits and drawbacks of automation in client-lawyer interactions? Why might a solo or small firm lawyer decide to use chatbot tools? Discuss any ethical considerations raised.
+  Considering the increasing trend towards low-code development platforms for legal document automation, such as Gavel, and open-source solutions like Docassemble, analyze the pros and cons of each approach in the context of legal services. How do these platforms differ in terms of customization capabilities, potential for vendor lock-in, and the ability to bridge skill gaps among legal professionals? Furthermore, discuss the implications of these differences for legal aid organizations aiming to implement technological solutions to increase access to justice as well as private law firms.
   '''
 ---
 id: first_page
