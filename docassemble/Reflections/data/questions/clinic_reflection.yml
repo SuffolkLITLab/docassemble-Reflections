@@ -149,4 +149,4 @@ fields:
     datatype: area
     rows: 5
     validate: |
-      lambda y: (wc := len(y.split(" "))) > 10 or validation_error(f"Write at least 50 words (you wrote { wc }).")
+      lambda y: (wc := len(y.split(" "))) > 20 or validation_error(f"Write at least 20 words (you wrote { wc }).")
