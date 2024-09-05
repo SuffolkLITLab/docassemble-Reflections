@@ -1,3 +1,8 @@
+---
+metadata:
+  title: |
+    Weekly Clinic Reflection
+---
 metadata:
   require login: True
 ---
@@ -14,14 +19,14 @@ objects:
 ---
 variable name: reflection_goals
 data:
-  - Demonstrate that you understand the material
-  - Draw on specific examples from the reading to support your claim
-  - Demonstrate critical analysis and synthesis
-  - Clearly articulate personal learning and how the readings impact your understanding or perspective
+    - What you worked on this week, including any assigned readings.
+    - What part of your process worked well for you.
+    - What part of your process didn't work as well.
+    - Any suggestions or ideas you have for improving your approach next week.
 ---
 template: rubric_explanation
 content: |
-  In your response, consider the following rubric:
+  In your response, answer the following questions:
 
   % for goal in reflection_goals:
   - ${ goal }
@@ -111,3 +116,37 @@ attachment:
       ${ value }
       % endif
       % endfor
+---
+sets: reflection_questions["chat"].initial_question
+code: |
+  reflection_questions["chat"].initial_question = '''
+  Reflect on your growth and learning over the last week. Make
+  sure to cover all of the elements in the rubric.
+  '''
+---
+id: first_page
+continue button field: questions
+question: |
+  Weekly reflection
+fields:
+  - How was last week's class on a scale of 1 to 5?: reflection_questions["class_rating"]
+    datatype: range
+    min: 1
+    max: 5
+    step: 1
+    default: 5
+  - What do you think could be improved? What worked well?: reflection_questions["suggestions"]
+    datatype: area
+    rows: 3
+    required: False
+  - note: |
+      ---
+  - label: |
+      ${ reflection_questions["chat"].initial_question }
+      
+      ${ rubric_explanation }
+    field: reflection_questions["chat"].initial_draft
+    datatype: area
+    rows: 5
+    validate: |
+      lambda y: (wc := len(y.split(" "))) > 10 or validation_error(f"Write at least 50 words (you wrote { wc }).")
