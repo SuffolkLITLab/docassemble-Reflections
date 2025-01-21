@@ -10,7 +10,7 @@ include:
 ---
 objects:
   - reflection_questions: DADict.using(auto_gather=False, gathered=True)
-  - reflection_questions["chat"]: GoalSatisfactionList.using(goals=reflection_goals) #, model="gpt-4o-mini")
+  - reflection_questions["chat"]: GoalSatisfactionList.using(goals=reflection_goals, model="gpt-4-turbo")
 ---
 variable name: reflection_goals
 data:
@@ -76,7 +76,7 @@ question: |
   Thanks for your reflection!
 subquestion: |
   You can download a copy of your responses below. Please attach a copy of your reflection to 
-  your weekly reflection assignment on Teams.
+  your weekly reflection assignment on Canvas.
 
   Here is some feedback on your reflection:
 

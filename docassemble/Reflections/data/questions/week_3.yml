@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Given the efficiency gains and productivity improvements discussed so far in class, in this week's readings, and in the 2023 Legal Trends Report, particularly the impact of technology and AI on legal practice, how can tools like Docassemble be leveraged to not only build expert systems but also enhance client-centered legal services? Reflect on the potential challenges and ethical considerations that may arise when integrating such technologies into your practice.
+  Considering the increasing trend towards low-code development platforms for legal document automation, such as Gavel, and open-source solutions like Docassemble, analyze the pros and cons of each approach in the context of legal services. How do these platforms differ in terms of customization capabilities, potential for vendor lock-in, and the ability to bridge skill gaps among legal professionals? Furthermore, discuss the implications of these differences for legal aid organizations aiming to implement technological solutions to increase access to justice as well as private law firms.
   '''
 ---
 id: first_page

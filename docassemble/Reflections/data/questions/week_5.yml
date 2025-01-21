@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Considering the increasing trend towards low-code development platforms for legal document automation, such as Gavel, and open-source solutions like Docassemble, analyze the pros and cons of each approach in the context of legal services. How do these platforms differ in terms of customization capabilities, potential for vendor lock-in, and the ability to bridge skill gaps among legal professionals? Furthermore, discuss the implications of these differences for legal aid organizations aiming to implement technological solutions to increase access to justice as well as private law firms.
+  Reflect on the training materials and examples described in the Docassemble website as well as CourtFormsOnline.org What do you notice about Docassemble as compared to the Gavel platform that we used in Week 3? What concerns and excitement are you feeling as you contemplate learning this platform?
   '''
 ---
 id: first_page
@@ -27,12 +27,6 @@ fields:
     step: 1
     default: 5
   - What do you think could be improved? What worked well?: reflection_questions["suggestions"]
-    datatype: area
-    rows: 3
-    required: False
-  - note: |
-      ---
-  - What do you want to know about Gavel innovator in chief [Brittany Hernandez](https://www.linkedin.com/in/brittanylhernandez)? Write 1-2 questions you might ask in class.: reflection_questions["brittany_hernandez"]
     datatype: area
     rows: 3
     required: False

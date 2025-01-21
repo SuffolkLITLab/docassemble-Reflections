@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  How does the term 'earliest testable product' (ETP) relate to the concept of 'minimum viable product' (MVP)? How do the readings suggest that ETPs and MVPs can be used to improve legal services? Discuss how the readings have influenced your perspective on the role of technology in legal practice. How might you apply these concepts in your final project?
+  Reflecting on Steve Krug's 'Don't Make Me Think' and the C.R.A.P. design principles, how can the insights from these resources be applied to improve the clarity and effectiveness of legal documents or websites? Additionally, consider the advice from 'How to Write Good Questions': What strategies would you employ to ensure that questions within these legal documents or user interfaces are direct, clear, and easy to understand for all users, regardless of their legal expertise?
   '''
 ---
 id: first_page
