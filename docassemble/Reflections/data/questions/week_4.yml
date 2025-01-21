@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Considering the findings that generative AI tools can significantly enhance legal professionals' productivity and narrow the justice gap, how might the introduction of these tools reshape the professional responsibilities and ethical considerations of legal aid lawyers, particularly in managing risks associated with AI-generated content such as 'hallucinations' or biased outputs? Additionally, given the initial lower usage rates of AI tools among women and the significant improvement post-trial, what steps should legal aid organizations take to ensure equitable access and usage of these technologies across all demographics, including training and support systems to mitigate bias in AI applications
+  Considering the findings that generative AI tools can significantly enhance legal professionals' productivity and narrow the justice gap, how might the introduction of these tools reshape the professional responsibilities and ethical considerations of legal aid lawyers, particularly in managing risks associated with AI-generated content such as 'hallucinations' or biased outputs? Additionally, given the initial lower usage rates of AI tools among women and the significant improvement post-trial, what steps should legal aid organizations take to ensure equitable access and usage of these technologies across all demographics, including training and support systems to mitigate bias in AI applications?
   '''
 ---
 id: first_page
@@ -27,12 +27,6 @@ fields:
     step: 1
     default: 5
   - What do you think could be improved? What worked well?: reflection_questions["suggestions"]
-    datatype: area
-    rows: 3
-    required: False
-  - note: |
-      ---
-  - What do you want to know about firm owner [Laura Patton](https://planningyourlegacy.net/)? Write 1-2 questions you might ask in class.: reflection_questions["laura_patton"]
     datatype: area
     rows: 3
     required: False

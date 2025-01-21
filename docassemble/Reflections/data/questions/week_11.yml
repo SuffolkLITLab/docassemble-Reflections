@@ -10,7 +10,7 @@ metadata:
 sets: reflection_questions["chat"].initial_question
 code: |
   reflection_questions["chat"].initial_question = '''
-  Before conducting a usability test, reflect on the primary objectives and methodologies of usability testing based on your studies. What specific aspects of the user experience are you most interested in evaluating, and why? Consider how the principles of effective design and user feedback can inform your approach to this test. How will you ensure that the test is structured to yield actionable insights that can lead to meaningful improvements in the product or interface?
+  Before conducting a usability test, reflect on the primary objectives and methodologies of usability testing based on your studies. What specific aspects of the user experience are you most interested in evaluating, and why?
   '''
 ---
 id: first_page
