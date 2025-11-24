@@ -1,6 +1,6 @@
 import os
 import sys
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 from fnmatch import fnmatchcase
 from distutils.util import convert_path
 
@@ -52,8 +52,7 @@ setup(name='docassemble.Reflections',
       author_email='qsteenhuis@suffolk.edu',
       license='MIT',
       url='https://suffolklitlab.org/legal-tech-class',
-      packages=find_packages(),
-      namespace_packages=['docassemble'],
+      packages=find_namespace_packages(),
       install_requires=[],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/Reflections/', package='docassemble.Reflections'),
